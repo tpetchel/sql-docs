@@ -1,0 +1,90 @@
+# %version 1
+contentPath: docs\linux\quickstart-install-connect-docker.md
+
+steps:
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  uid: b2761d46
+- task: SetPlaceholder@1
+  textToReplace: sudo
+  replacementText: " "
+  uid: 80c21bf7
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  uid: 79de2388
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  uid: 764d1672
+- task: RunCodeSnippet@1
+  environment:
+    type: sql-server-linux
+    version: 2017-latest
+  uid: 966c8385
+- task: RunCodeSnippet@1
+  environment:
+    type: sql-server-linux
+    version: 2017-latest
+  uid: b8d74d3f
+- task: RunCodeSnippet@1
+  environment:
+    type: sql-server-linux
+    version: 2017-latest
+  append: ' -Q "SELECT @@VERSION"'
+  uid: c6e3998c
+- task: RunCodeSnippet@1
+  environment:
+    type: sql-server-linux
+    version: 2017-latest
+  uid: e0f8f97f
+- task: RunCodeSnippet@1
+  environment:
+    type: sql-server-linux
+    version: 2017-latest
+  uid: f9281e0e
+- task: RunCodeSnippet@1
+  environment:
+    type: sql-server-linux
+    version: 2017-latest
+  uid: f39b2fbf
+- task: RunCodeSnippet@1
+  environment:
+    type: sql-server-linux
+    version: 2017-latest
+  uid: b33756a
+- task: RunCodeSnippet@1
+  environment:
+    type: sql-server-linux
+    version: 2017-latest
+  uid: "507853"
+- task: RunCodeSnippet@1
+  environment:
+    type: sql-server-linux
+    version: 2017-latest
+  uid: 6d45ed7
+- task: RunCodeSnippet@1
+  environment:
+    type: sql-server-linux
+    version: 2017-latest
+  uid: 1a74f0f4
+- task: RunCodeSnippet@1
+  environment:
+    type: sql-server-linux
+    version: 2017-latest
+  uid: 10a7fc1a
+- task: RunCodeSnippet@1
+  environment:
+    type: sql-server-linux
+    version: 2017-latest
+  uid: 157da977
+- task: RunCodeSnippet@1
+  environment:
+    type: sql-server-linux
+    version: 2017-latest
+  uid: 2c260148
+- task: RunCodeSnippet@1
+  environment:
+    type: docker
+  uid: 4f388969

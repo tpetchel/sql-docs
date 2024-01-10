@@ -59,6 +59,8 @@ Before starting the following steps, make sure that you have selected your prefe
 1. Pull the SQL Server 2017 Linux container image from Microsoft Container Registry.
 
    ::: zone pivot="cs1-bash"
+   <!-- replaycheck-task id="80c21bf7" -->
+   <!-- replaycheck-task id="b2761d46" -->
    ```bash
    sudo docker pull mcr.microsoft.com/mssql/server:2017-latest
    ```
@@ -88,6 +90,7 @@ Before starting the following steps, make sure that you have selected your prefe
 2. To run the container image with Docker, you can use the following command from a bash shell (Linux/macOS) or elevated PowerShell command prompt.
 
    ::: zone pivot="cs1-bash"
+   <!-- replaycheck-task id="79de2388" -->
    ```bash
    sudo docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=<YourStrong!Passw0rd>" \
       -p 1433:1433 --name sql1 \
@@ -131,6 +134,7 @@ Before starting the following steps, make sure that you have selected your prefe
 
 
    ::: zone pivot="cs1-bash"
+   <!-- replaycheck-task id="764d1672" -->
    ```bash
    sudo docker ps -a
    ```
@@ -156,6 +160,7 @@ Before starting the following steps, make sure that you have selected your prefe
 
 The `-h` (host name) parameter is also useful, but it is not used in this tutorial for simplicity. This changes the internal name of the container to a custom value. This is the name you'll see returned in the following Transact-SQL query:
 
+<!-- replaycheck-task id="966c8385" -->
 ```sql
 SELECT @@SERVERNAME,
     SERVERPROPERTY('ComputerNamePhysicalNetBIOS'),
@@ -297,6 +302,7 @@ The **SA** account is a system administrator on the SQL Server instance that get
 1. Use `docker exec` to run **sqlcmd** to change the password using Transact-SQL. In the following example, replace the old password, `<YourStrong!Passw0rd>`, and the new password, `<YourNewStrong!Passw0rd>`, with your own password values.
 
    ::: zone pivot="cs1-bash"
+   <!-- replaycheck-task id="b8d74d3f" -->
    ```bash
    sudo docker exec -it sql1 /opt/mssql-tools/bin/sqlcmd \
       -S localhost -U SA -P "<YourStrong!Passw0rd>" \
@@ -346,6 +352,7 @@ The following steps use the SQL Server command-line tool, **sqlcmd**, inside the
 
 2. Once inside the container, connect locally with sqlcmd. Sqlcmd is not in the path by default, so you have to specify the full path.
 
+   <!-- replaycheck-task id="c6e3998c" -->
    ```bash
    /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "<YourNewStrong!Passw0rd>"
    ```
@@ -365,18 +372,21 @@ The following steps create a new database named `TestDB`.
 
 1. From the **sqlcmd** command prompt, paste the following Transact-SQL command to create a test database:
 
+   <!-- replaycheck-task id="e0f8f97f" -->
    ```sql
    CREATE DATABASE TestDB
    ```
 
 2. On the next line, write a query to return the name of all of the databases on your server:
 
+   <!-- replaycheck-task id="f9281e0e" -->
    ```sql
    SELECT Name from sys.Databases
    ```
 
 3. The previous two commands were not executed immediately. You must type `GO` on a new line to execute the previous commands:
 
+   <!-- replaycheck-task id="f39b2fbf" -->
    ```sql
    GO
    ```
@@ -387,24 +397,28 @@ Next create a new table, `Inventory`, and insert two new rows.
 
 1. From the **sqlcmd** command prompt, switch context to the new `TestDB` database:
 
+   <!-- replaycheck-task id="b33756a" -->
    ```sql
    USE TestDB
    ```
 
 2. Create new table named `Inventory`:
 
+   <!-- replaycheck-task id="507853" -->
    ```sql
    CREATE TABLE Inventory (id INT, name NVARCHAR(50), quantity INT)
    ```
 
 3. Insert data into the new table:
 
+   <!-- replaycheck-task id="6d45ed7" -->
    ```sql
    INSERT INTO Inventory VALUES (1, 'banana', 150); INSERT INTO Inventory VALUES (2, 'orange', 154);
    ```
 
 4. Type `GO` to execute the previous commands:
 
+   <!-- replaycheck-task id="1a74f0f4" -->
    ```sql
    GO
    ```
@@ -415,12 +429,14 @@ Now, run a query to return data from the `Inventory` table.
 
 1. From the **sqlcmd** command prompt, enter a query that returns rows from the `Inventory` table where the quantity is greater than 152:
 
+   <!-- replaycheck-task id="10a7fc1a" -->
    ```sql
    SELECT * FROM Inventory WHERE quantity > 152;
    ```
 
 2. Execute the command:
 
+   <!-- replaycheck-task id="157da977" -->
    ```sql
    GO
    ```
@@ -429,6 +445,7 @@ Now, run a query to return data from the `Inventory` table.
 
 1. To end your **sqlcmd** session, type `QUIT`:
 
+   <!-- replaycheck-task id="2c260148" -->
    ```sql
    QUIT
    ```
@@ -480,6 +497,7 @@ Other common tools to connect to SQL Server include:
 If you want to remove the SQL Server container used in this tutorial, run the following commands:
 
 ::: zone pivot="cs1-bash"
+<!-- replaycheck-task id="4f388969" -->
 ```bash
 sudo docker stop sql1
 sudo docker rm sql1
