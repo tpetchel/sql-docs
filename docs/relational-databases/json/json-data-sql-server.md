@@ -17,6 +17,7 @@ monikerRange: "=azuresqldb-current||= azure-sqldw-latest||>=sql-server-2016||=sq
 ---
 
 # JSON data in SQL Server
+<!-- replaycheck-task id="e9549838" -->
 [!INCLUDE[appliesto-ss2016-asdb-asdw-xxx-md.md](../../includes/tsql-appliesto-ss2016-asdb-asdw-xxx-md.md)]
 
 JSON is a popular textual data format that's used for exchanging data in modern web and mobile applications. JSON is also used for storing unstructured data in log files or NoSQL databases such as Microsoft Azure Cosmos DB. Many REST web services return results that are formatted as JSON text or accept data that's formatted as JSON. For example, most Azure services, such as Azure Search, Azure Storage, and Azure Cosmos DB, have REST endpoints that return or consume JSON. JSON is also the main format for exchanging data between webpages and web servers by using AJAX calls. 
@@ -66,6 +67,7 @@ If you have JSON text that's stored in database tables, you can read or modify v
   
 In the following example, the query uses both relational and JSON data (stored in a column named `jsonCol`) from a table:  
   
+<!-- replaycheck-task id="1a244cbd" -->
 ```sql  
 SELECT Name,Surname,
  JSON_VALUE(jsonCol,'$.info.address.PostCode') AS PostCode,
@@ -86,6 +88,7 @@ For more information, see [Validate, query, and change JSON data with built-in f
 ### Change JSON values
 If you must modify parts of JSON text, you can use the [JSON_MODIFY (Transact-SQL)](../../t-sql/functions/json-modify-transact-sql.md) function to update the value of a property in a JSON string and return the updated JSON string. The following example updates the value of a property in a variable that contains JSON:  
   
+<!-- replaycheck-task id="1cb4d71e" -->
 ```sql  
 DECLARE @json NVARCHAR(MAX);
 SET @json = '{"info":{"address":[{"town":"Belgrade"},{"town":"Paris"},{"town":"Madrid"}]}}';
@@ -103,6 +106,7 @@ You don't need a custom query language to query JSON in SQL Server. To query JSO
   
 The following example calls **OPENJSON** and transforms the array of objects that is stored in the `@json` variable to a rowset that can be queried with a standard SQL **SELECT** statement:  
   
+<!-- replaycheck-task id="6f63bcb2" -->
 ```sql  
 DECLARE @json NVARCHAR(MAX)
 SET @json =  
@@ -139,6 +143,7 @@ JSON documents may have sub-elements and hierarchical data that cannot be direct
 
 In the following example, the second object in the array has sub-array representing person skills. Every sub-object can be parsed using additional `OPENJSON` function call: 
 
+<!-- replaycheck-task id="75e71425" -->
 ```sql  
 DECLARE @json NVARCHAR(MAX)
 SET @json =  
@@ -179,6 +184,7 @@ Format SQL Server data or the results of SQL queries as JSON by adding the **FOR
   
 The following example uses PATH mode with the **FOR JSON** clause:  
   
+<!-- replaycheck-task id="adc9771f" -->
 ```sql  
 SELECT id, firstName AS "info.name", lastName AS "info.surname", age, dateOfBirth as dob  
 FROM People  

@@ -1,0 +1,47 @@
+# %version 1
+contentPath: docs\relational-databases\json\json-data-sql-server.md
+
+steps:
+- task: RunCodeSnippet@1
+  environment:
+    type: sql-server-linux
+    version: 2022-latest
+  uid: 1a244cbd
+- task: RunScript@1
+  path: setup.sql
+  environment:
+    type: sql-server-linux
+    version: 2022-latest
+  uid: e9549838
+- task: RunCodeSnippet@1
+  environment:
+    type: sql-server-linux
+    version: 2022-latest
+  outputValidationRules:
+  - operator: contains
+    value: Madrid
+  uid: 1cb4d71e
+- task: RunCodeSnippet@1
+  environment:
+    type: sql-server-linux
+    version: 2022-latest
+  outputValidationRules:
+  - operator: contains
+    value: 2005-11-04T12:00:00
+  uid: 6f63bcb2
+- task: RunCodeSnippet@1
+  environment:
+    type: sql-server-linux
+    version: 2022-latest
+  outputValidationRules:
+  - operator: contains
+    value: Azure
+  uid: "75e71425"
+- task: RunCodeSnippet@1
+  environment:
+    type: sql-server-linux
+    version: 2022-latest
+  outputValidationRules:
+  - operator: contains
+    value: 2005-11-04T12:00:00
+  uid: adc9771f
